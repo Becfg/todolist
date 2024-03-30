@@ -2,3 +2,8 @@
     /*border: 1px black solid;*/
     font-size: 18px;
 }
+
+ul {
+    list-style: none;
+    padding: 0px;
+}

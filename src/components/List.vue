@@ -15,7 +15,4 @@ defineProps({
 </template>
 
 <style scoped>
-ul {
-  list-style: none;
-}
 </style>
