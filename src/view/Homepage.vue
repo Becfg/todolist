@@ -2,7 +2,7 @@
   <div class="container">
     <div class="title">TodoList</div>
     <div class="start-btn">
-      <router-link to="/todolist" @click="option[1].click()">开始使用</router-link>
+      <router-link to="/todolist" @click="abc()">开始使用</router-link>
     </div>
   </div>
 </template>
@@ -40,5 +40,9 @@
 }
 </style>
 <script lang="ts" setup>
-let option = document.querySelectorAll('.tab li')
+let option: any = document.querySelectorAll('.tab li')
+
+function abc() {
+  option[1].click()
+}
 </script>

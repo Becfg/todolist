@@ -8,10 +8,10 @@ onMounted(() => {
   let option = document.querySelectorAll('.tab li')
 
   option.forEach(function (item) {
-    item.onclick = function () {
+    item.addEventListener('click', () => {
       option.forEach(item => item.id = "")
       item.id = "active"
-    }
+    })
   })
 })
 
@@ -47,7 +47,7 @@ onMounted(() => {
 
 ul {
   padding-left: 15px;
-  margin: 0px;
+  margin: 0;
   display: flex;
 
   li {
