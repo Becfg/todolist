@@ -36,4 +36,9 @@ li {
 .done {
   text-decoration: line-through;
 }
+
+input {
+  width: 20px;
+  height: 20px;
+}
 </style>

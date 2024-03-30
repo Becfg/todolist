@@ -1,77 +1,36 @@
 <script lang="ts" setup>
 
-import Footer from "./components/Footer.vue";
-import List from "./components/List.vue";
-import Header from "./components/Header.vue";
-import {computed, onMounted, provide, ref, watch} from "vue";
+import {RouterView} from "vue-router";
+import {onMounted} from "vue";
 
-interface Todo {
-  id: number
-  title: string
-  done: boolean
-}
 
-const hideCompleted = ref(false)//默认不隐藏
-
-const todos = ref<Todo[]>([])
-
-// 从缓存载入数据
 onMounted(() => {
-  todos.value = JSON.parse(localStorage.getItem("todos") || "[]")
+  let option = document.querySelectorAll('.tab li')
+
+  option.forEach(function (item) {
+    item.addEventListener('click', () => {
+      option.forEach(item => item.id = "")
+      item.id = "active"
+    })
+  })
 })
 
-// 隐藏已完成
-const filteredTodos = computed(() =>
-    hideCompleted.value ?
-        todos.value.filter((t) => !t.done) :
-        todos.value
-)
-
-// 删除todo
-function deleteTodo(id: number) {
-  todos.value = todos.value.filter((item) => item.id !== id)
-}
-
-// 清除已完成
-function clearAllDone() {
-  todos.value = todos.value.filter((t) => !t.done)
-}
-
-// 响应添加todo
-function HandleaddTodo(title: string) {
-  if (!title.trim()) {
-    return alert("输入不能为空")
-  }
-  todos.value.unshift({
-    id: Date.now(),
-    title: title,
-    done: false
-  })
-}
-
-// 保存数据方法
-function saveData() {
-  localStorage.setItem("todos", JSON.stringify(todos.value))
-}
-
-// 传递数据
-provide("deleteTodo", deleteTodo)
-provide("HandleaddTodo", HandleaddTodo)
-
-// 更新数据
-watch(todos, saveData, {deep: true})//深度监听
 </script>
 
 <template>
-  <a href="https://github.com/Becfg/todolist">https://github.com/Becfg/todolist</a>
   <div class="todo-container">
-    <Header></Header>
-    <List :todos="filteredTodos"></List>
-    <Footer :hide="hideCompleted"
-            :todos="todos"
-            @clearAllDone="clearAllDone"
-            @hideSwitch="hideCompleted = !hideCompleted"
-    ></Footer>
+    <ul class="tab">
+      <li id="active">
+        <router-link to="/">Home</router-link>
+      </li>
+      <li>
+        <router-link to="/todolist">TODO</router-link>
+      </li>
+      <li>
+        <router-link to="/about">About</router-link>
+      </li>
+    </ul>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -84,5 +43,30 @@ watch(todos, saveData, {deep: true})//深度监听
   border-radius: 5px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   background-color: #ddd;
+}
+
+ul {
+  padding-left: 15px;
+  margin: 0;
+  display: flex;
+
+  li {
+    margin-right: 30px;
+    margin-bottom: 10px;
+  }
+}
+
+#active {
+  a {
+    font-weight: 600;
+    font-size: 20px;
+    color: #3379ff;
+    border-bottom: 2px black solid;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: #7a7a7a;
 }
 </style>

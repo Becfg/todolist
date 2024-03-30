@@ -25,9 +25,9 @@ const doneCount = computed(() => props.todos?.reduce((pre: number, todo: any) =>
 }
 
 .clearAllDone {
-  background-color: brown;
+  background-color: #ff6060;
   border: none;
-  color: cyan;
+  color: #fff;
 }
 
 
