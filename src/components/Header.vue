@@ -1,20 +1,21 @@
 <script lang="ts" setup>
 
-import {inject, ref} from "vue";
+import { ref} from "vue";
 
-const title = ref("")
+const title = ref<string>("")
 
-const HandleaddTodo = inject<any>("HandleaddTodo")
-
+const emit = defineEmits<{
+  (e: 'addTodo', title:string):void,
+}>();
 function addTodo() {
-  HandleaddTodo(title.value)
+  emit("addTodo",title.value)
   title.value = ""
 }
 </script>
 
 <template>
   <div class="todo-header">
-    <input v-model="title" placeholder="请输入任务名(回车添加" type="text" @keyup.enter="addTodo">
+    <input class="todo-input" v-model="title" placeholder="请输入任务名(回车添加" type="text" @keyup.enter="addTodo">
     <button class="add" @click="addTodo">添加</button>
   </div>
 </template>

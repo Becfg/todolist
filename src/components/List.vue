@@ -10,7 +10,7 @@ defineProps({
 
 <template>
   <ul class="todo-list">
-    <Item v-for="todo in todos" :key="todo.id" :todo="todo"></Item>
+    <Item data-test="item" v-for="todo in todos" :key="todo.id" :todo="todo"></Item>
   </ul>
 </template>
 

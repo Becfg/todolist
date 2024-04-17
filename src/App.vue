@@ -3,7 +3,7 @@
 import Footer from "./components/Footer.vue";
 import List from "./components/List.vue";
 import Header from "./components/Header.vue";
-import {computed, onMounted, provide, ref, watch} from "vue";
+import {computed, onMounted, ref, watch} from "vue";
 
 interface Todo {
   id: number
@@ -38,7 +38,7 @@ function clearAllDone() {
 }
 
 // 响应添加todo
-function HandleaddTodo(title: string) {
+const HandleAddTodo = (title: string) => {
   if (!title.trim()) {
     return alert("输入不能为空")
   }
@@ -54,10 +54,6 @@ function saveData() {
   localStorage.setItem("todos", JSON.stringify(todos.value))
 }
 
-// 传递数据
-provide("deleteTodo", deleteTodo)
-provide("HandleaddTodo", HandleaddTodo)
-
 // 更新数据
 watch(todos, saveData, {deep: true})//深度监听
 </script>
@@ -65,8 +61,8 @@ watch(todos, saveData, {deep: true})//深度监听
 <template>
   <a href="https://github.com/Becfg/todolist">https://github.com/Becfg/todolist</a>
   <div class="todo-container">
-    <Header></Header>
-    <List :todos="filteredTodos"></List>
+    <Header @add-todo="HandleAddTodo"></Header>
+    <List :todos="filteredTodos" @DelTodo="deleteTodo"></List>
     <Footer :hide="hideCompleted"
             :todos="todos"
             @clearAllDone="clearAllDone"

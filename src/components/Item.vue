@@ -1,20 +1,19 @@
 <script lang="ts" setup>
 
-import {inject} from "vue";
 
 defineProps({
   todo: Object as any
 })
 
-const deleteTodo: any = inject("deleteTodo")
+const emit = defineEmits(["DelTodo"])
 
 </script>
 
 <template>
-  <li>
+  <li class="todo-item">
     <input v-model="todo.done" type="checkbox">
     <span :class="{done:todo.done}">{{ todo.title }}</span>
-    <button class="del" @click="deleteTodo(todo.id)">删除</button>
+    <button class="del" @click="emit('DelTodo',todo.id)">删除</button>
   </li>
 </template>
 
