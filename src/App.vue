@@ -1,26 +1,14 @@
 <script lang="ts" setup>
 
 import {RouterView} from "vue-router";
-import {onMounted} from "vue";
-
-
-onMounted(() => {
-  let option = document.querySelectorAll('.tab li')
-
-  option.forEach(function (item) {
-    item.addEventListener('click', () => {
-      option.forEach(item => item.id = "")
-      item.id = "active"
-    })
-  })
-})
+import {userStore} from "./stores/user.ts";
 
 </script>
 
 <template>
   <div class="todo-container">
     <ul class="tab">
-      <li id="active">
+      <li>
         <router-link to="/">Home</router-link>
       </li>
       <li>
@@ -28,6 +16,9 @@ onMounted(() => {
       </li>
       <li>
         <router-link to="/about">About</router-link>
+      </li>
+      <li>
+        <router-link to="/login">{{ userStore().isAuthenticated? "SignOut":"Login" }}</router-link>
       </li>
     </ul>
     <router-view></router-view>
@@ -55,16 +46,12 @@ ul {
     margin-bottom: 10px;
   }
 }
-
-#active {
-  a {
-    font-weight: 600;
-    font-size: 20px;
-    color: #3379ff;
-    border-bottom: 2px black solid;
-  }
+.router-link-active {
+  font-weight: 600;
+  font-size: 20px;
+  color: #3379ff;
+  border-bottom: 2px black solid;
 }
-
 a {
   text-decoration: none;
   color: #7a7a7a;
