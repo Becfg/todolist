@@ -35,7 +35,7 @@ const router = createRouter({
 //白名单
 const whileList = ['/',"/login"];
 
-router.beforeEach((to,form,next)=>{
+router.beforeEach((to,_form,next)=>{
     if (whileList.includes(to.path)||userStore().isAuthenticated){
         next()
     }else {
