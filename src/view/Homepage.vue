@@ -3,7 +3,7 @@
     <span class="title">TodoList</span>
     <el-button color="slateblue" size="large" class="start-btn">
       <router-link to="/todolist">开始使用</router-link>
-    </el-button>1
+    </el-button>
   </div>
 </template>
 
