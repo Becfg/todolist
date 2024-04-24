@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 
 import Item from "./Item.vue";
+import {Todo} from "../type/type.ts";
 
 defineProps({
-  todos: Array as any
+  todos: Object as () => Todo
 })
 
 </script>

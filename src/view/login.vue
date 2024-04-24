@@ -28,32 +28,33 @@ const login = () => {
 </script>
 
 <template>
-<div class="flex">
-  <div class="login-box">
-    <h2>登录</h2>
-    <form @submit.prevent="login" class="login-form">
-      <div class="form-group">
-        <label for="username">用户名:</label>
-        <input type="text" id="username" v-model="username" required autofocus>
-      </div>
-      <div class="form-group">
-        <label for="password">密码:</label>
-        <input type="password" id="password" v-model="password" required>
-      </div>
-      <button type="submit">登录</button>
-    </form>
+<div class="container">
+  <h2>登录</h2>
+  <div class="login-box flex-center">
+    <el-form @submit.prevent="login()"  class="flex-center" style="max-width: 36vw" >
+        <el-form-item label="用户名:">
+          <el-input type="text" v-model="username" />
+        </el-form-item>
+      <el-form-item label="密码:">
+        <el-input type="password" v-model="password" />
+      </el-form-item>
+      <el-button class="submit" size="large" color="#6a5acd">登录</el-button>
+    </el-form>
     <p v-if="error" class="error-message">{{ error }}</p>
   </div>
 </div>
 </template>
 
 <style scoped>
-.flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80vh;
+.container {
+  height: 70vh;
   background-color: #f0f0f0;
+}
+
+.flex-center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .login-box {
@@ -70,33 +71,10 @@ h2 {
   font-size: 40px;
 }
 
-.form-group {
-  margin-bottom: 25px;
-}
 
-label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
-  color: #555555;
-}
 
-input {
-  box-sizing: border-box;
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #cccccc;
-  border-radius: 6px;
-}
-
-button {
-  width: 100%;
-  padding: 12px;
-  background-color: #6a5acd;
-  color: #ffffff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+.submit {
+  width: 60%;
 }
 
 .error-message {

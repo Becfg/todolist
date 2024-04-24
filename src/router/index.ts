@@ -35,12 +35,12 @@ const router = createRouter({
 //白名单
 const whileList = ['/',"/login"];
 
-router.beforeEach((to,_form,next)=>{
-    if (whileList.includes(to.path)||userStore().isAuthenticated){
-        next()
-    }else {
-        alert("未登录,即将跳转登录页");
-        next("/login")
-    }
-})
+// router.beforeEach((to,_form,next)=>{
+//     if (whileList.includes(to.path)||userStore().isAuthenticated){
+//         next()
+//     }else {
+//         alert("未登录,即将跳转登录页");
+//         next("/login")
+//     }
+// })
 export default router;

@@ -4,12 +4,8 @@ import Footer from "./Footer.vue";
 import List from "./List.vue";
 import Header from "./Header.vue";
 import {computed, onMounted, provide, ref, watch} from "vue";
+import {Todo} from "../type/type.ts";
 
-interface Todo {
-  id: number
-  title: string
-  done: boolean
-}
 
 const hideCompleted = ref(false)//默认不隐藏
 

@@ -1,16 +1,13 @@
 <template>
   <div class="container">
-    <div class="title">TodoList</div>
-    <div class="start-btn">
-      <router-link to="/todolist" @click="abc()">开始使用</router-link>
-    </div>
+    <span class="title">TodoList</span>
+    <el-button color="slateblue" size="large" class="start-btn">
+      <router-link to="/todolist">开始使用</router-link>
+    </el-button>
   </div>
 </template>
 
 <style scoped>
-* {
-  //border: black 1px solid;
-}
 
 .container {
   display: flex;
@@ -27,9 +24,6 @@
 }
 
 .start-btn {
-  background-color: slateblue;
-  border-radius: 5px;
-  padding: 10px 20px;
   margin-top: 15vh;
 
   a {
@@ -40,9 +34,4 @@
 }
 </style>
 <script lang="ts" setup>
-let option: any = document.querySelectorAll('.tab li')
-
-function abc() {
-  option[1].click()
-}
 </script>
