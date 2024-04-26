@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 
-import {inject} from "vue";
-import {Todo} from "../type/type.ts";
+import { inject } from "vue";
 
 defineProps({
   todo: Object as () => Todo
@@ -12,28 +11,24 @@ const deleteTodo: any = inject("deleteTodo")
 </script>
 
 <template>
-  <el-card class="card" shadow="hover">
-    <el-checkbox size="default" class="checkbox" v-model="todo.done" type="checkbox"/>
-    <span :class="{done:todo.done}">{{ todo.title }}</span>
-    <el-button class="del" type="danger" @click="deleteTodo(todo.id)">删除</el-button>
-  </el-card>
+  <div class="content">
+    <el-card style="margin-bottom: 5px;">
+      <div>
+        <el-checkbox size="large" v-model="todo.done" style="margin-right: 10px;" />
+        <el-text :tag="todo.done ? 'del' : 'span'" size="large">{{ todo.title }}</el-text>
+      </div>
+      <el-button type="danger" @click="deleteTodo(todo.id)">删除</el-button>
+    </el-card>
+  </div>
+
 </template>
 
 <style scoped>
-.card{
-  margin-bottom: 5px;
-  cursor: pointer;
-}
-.del {
-  float: right;
-}
-
-.done {
-  text-decoration: line-through;
-}
-
-input {
-  width: 20px;
-  height: 20px;
+.content :deep(.el-card__body) {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
 }
 </style>

@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 
-import {computed} from "vue";
+import { computed } from "vue";
 
 const props = defineProps({
-  todos: Array as any,
+  todos: Array,
   hide: Boolean
 })
 const emit = defineEmits(["hideSwitch", "clearAllDone"])
@@ -13,17 +13,19 @@ const doneCount = computed(() => props.todos?.reduce((pre: number, todo: any) =>
 <template>
   <div class="todo-footer">
     <el-button type="info" :plain="!hide" @click="emit('hideSwitch')">{{ hide ? "显示已完成" : "隐藏已完成" }}</el-button>
-    <el-statistic class="count" :value="doneCount">
-      <template #title>已完成</template>
-      <template #suffix>/{{ todos.length }}</template>
+    <el-statistic :value="doneCount" class="float-r">
+      <template #title>
+        <div style="display: inline-flex; align-items: center">已完成</div>
+      </template>
+      <template #suffix>/{{ todos?.length }}</template>
     </el-statistic>
     <br>
-    <el-button type="danger" class="clearAllDone" @click="emit('clearAllDone')">清除已完成任务</el-button>
+    <el-button type="danger" @click="emit('clearAllDone')">清除已完成任务</el-button>
   </div>
 </template>
 
 <style scoped>
-.count {
+.float-r {
   float: right;
 }
 </style>

@@ -34,7 +34,7 @@ function clearAllDone() {
 }
 
 // 响应添加todo
-function HandleaddTodo(title: string) {
+function handleAddTodo(title: string) {
   if (!title.trim()) {
     return alert("输入不能为空")
   }
@@ -52,7 +52,7 @@ function saveData() {
 
 // 传递数据
 provide("deleteTodo", deleteTodo)
-provide("HandleaddTodo", HandleaddTodo)
+provide("handleAddTodo", handleAddTodo)
 
 // 更新数据
 watch(todos, saveData, {deep: true})//深度监听

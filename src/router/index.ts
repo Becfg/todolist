@@ -33,7 +33,7 @@ const router = createRouter({
 });
 
 //白名单
-const whileList = ['/',"/login"];
+// const whileList = ['/',"/login"];
 
 // router.beforeEach((to,_form,next)=>{
 //     if (whileList.includes(to.path)||userStore().isAuthenticated){
