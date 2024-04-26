@@ -1,5 +1,5 @@
 import {defineStore} from "pinia";
-import {computed, ComputedRef, onMounted, ref, watch} from "vue";
+import {computed, onMounted, ref, watch} from "vue";
 import {Todo} from "../type/type";
 
 export const todoStore = defineStore("todo", () => {
@@ -9,22 +9,23 @@ export const todoStore = defineStore("todo", () => {
     const todos = ref<Todo[]>([])
 
 
-// 从缓存载入数据
     onMounted(() => {
+        // 从缓存载入数据
         todos.value = JSON.parse(localStorage.getItem("todos") || "[]")
+
     })
 
+    // 更新数据
+    watch(todos, saveData, {deep: true})//深度监听
 // 保存数据方法
     function saveData() {
         localStorage.setItem("todos", JSON.stringify(todos.value))
+        console.log("save")
     }
-
-// 更新数据
-    watch(todos, saveData, {deep: true})//深度监听
 
 
 // 隐藏已完成
-    const filteredTodos: ComputedRef<Todo[]> = computed(() =>
+    const filteredTodos = computed(() =>
         hideCompleted.value ?
             todos.value.filter((t) => !t.done) :
             todos.value
@@ -33,6 +34,7 @@ export const todoStore = defineStore("todo", () => {
 // 删除todo
     function deleteTodo(id: number) {
         todos.value = todos.value.filter((item) => item.id !== id)
+        console.log("del")
     }
 
 // 清除已完成

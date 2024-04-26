@@ -3,6 +3,7 @@
 import Item from "./Item.vue";
 import {todoStore} from "../stores/todo.ts";
 
+
 const todos = todoStore().filteredTodos
 
 </script>

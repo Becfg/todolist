@@ -3,7 +3,6 @@
 import {computed} from "vue";
 import {todoStore} from "../stores/todo.ts";
 
-
 const hide = todoStore().hideCompleted
 
 const todos = todoStore().todos
