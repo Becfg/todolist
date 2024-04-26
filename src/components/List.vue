@@ -1,11 +1,9 @@
 <script lang="ts" setup>
 
 import Item from "./Item.vue";
-import {Todo} from "../type/type.ts";
+import {todoStore} from "../stores/todo.ts";
 
-defineProps({
-  todos: Object as () => Todo
-})
+const todos = todoStore().filteredTodos
 
 </script>
 
@@ -15,5 +13,4 @@ defineProps({
   </ul>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

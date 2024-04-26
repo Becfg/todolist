@@ -1,18 +1,25 @@
 <script lang="ts" setup>
 
-import { computed } from "vue";
+import {computed} from "vue";
+import {todoStore} from "../stores/todo.ts";
 
-const props = defineProps({
-  todos: Array,
-  hide: Boolean
-})
-const emit = defineEmits(["hideSwitch", "clearAllDone"])
-const doneCount = computed(() => props.todos?.reduce((pre: number, todo: any) => pre + (todo.done ? 1 : 0), 0))
+
+const hide = todoStore().hideCompleted
+
+const todos = todoStore().todos
+
+const hideSwitch = () => todoStore().hideCompleted = !todoStore().hideCompleted
+const clearAllDone = todoStore().clearAllDone
+
+const doneCount = computed(() => todos?.reduce((pre: number, todo: any) => pre + (todo.done ? 1 : 0), 0))
 </script>
 
 <template>
   <div class="todo-footer">
-    <el-button type="info" :plain="!hide" @click="emit('hideSwitch')">{{ hide ? "显示已完成" : "隐藏已完成" }}</el-button>
+    <el-button :plain="!hide" type="info" @click="hideSwitch">{{
+        hide ? "显示已完成" : "隐藏已完成"
+      }}
+    </el-button>
     <el-statistic :value="doneCount" class="float-r">
       <template #title>
         <div style="display: inline-flex; align-items: center">已完成</div>
@@ -20,7 +27,7 @@ const doneCount = computed(() => props.todos?.reduce((pre: number, todo: any) =>
       <template #suffix>/{{ todos?.length }}</template>
     </el-statistic>
     <br>
-    <el-button type="danger" @click="emit('clearAllDone')">清除已完成任务</el-button>
+    <el-button type="danger" @click="clearAllDone">清除已完成任务</el-button>
   </div>
 </template>
 

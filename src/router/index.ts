@@ -3,7 +3,7 @@ import Homepage from "../view/Homepage.vue";
 import todolist from "../view/todolist.vue";
 import about from "../view/about.vue";
 import login from "../view/login.vue";
-import { userStore } from '../stores/user';
+// import { userStore } from '../stores/user';
 
 
 const router = createRouter({
@@ -25,8 +25,8 @@ const router = createRouter({
             component: about
         },
         {
-            path:"/login",
-            name:"login",
+            path: "/login",
+            name: "login",
             component: login
         }
     ]
