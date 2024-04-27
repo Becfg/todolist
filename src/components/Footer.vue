@@ -1,14 +1,14 @@
 <script lang="ts" setup>
 
 import {computed} from "vue";
-import {todoStore} from "../stores/todo.ts";
+import {useTodo} from "../stores/todo.ts";
 
-const hide = todoStore().hideCompleted
+const hide = useTodo().hideCompleted
 
-const todos = todoStore().todos
+const todos = useTodo().todos
 
-const hideSwitch = () => todoStore().hideCompleted = !todoStore().hideCompleted
-const clearAllDone = todoStore().clearAllDone
+const hideSwitch = () => useTodo().hideCompleted = !useTodo().hideCompleted
+const clearAllDone = useTodo().clearAllDone
 
 const doneCount = computed(() => todos?.reduce((pre: number, todo: any) => pre + (todo.done ? 1 : 0), 0))
 </script>

@@ -1,7 +1,8 @@
-<script setup lang="ts">
-import { ref, computed } from 'vue';
-import { userStore } from '../stores/user';
-import { useRouter } from 'vue-router';
+<script lang="ts" setup>
+import {ref, computed} from 'vue';
+import {userStore} from '../stores/user';
+import {useRouter} from 'vue-router';
+
 const router = useRouter();
 const user = userStore();
 const username = ref('admin');
@@ -28,32 +29,26 @@ const login = () => {
 </script>
 
 <template>
-  <div class="login-box flex">
+  <div class="login-box flex-center">
     <h1 style="font-size: 40px;">登录</h1>
-    <el-form @submit.prevent="login" class="login-form">
+    <el-form class="login-form" @submit.prevent="login">
       <el-form-item label="用户名:">
-        <el-input type="text" id="username" v-model="username" />
+        <el-input id="username" v-model="username" type="text"/>
       </el-form-item>
       <el-form-item label="密码:">
-        <el-input type="password" id="password" v-model="password" />
+        <el-input id="password" v-model="password" type="password"/>
       </el-form-item>
     </el-form>
-    <el-button color="#6a5acd" class="submit" @click="login">登录</el-button>
-    <el-text type="danger" v-if="error">{{ error }}</el-text>
+    <el-button class="submit" color="#6a5acd" @click="login">登录</el-button>
+    <el-text v-if="error" type="danger">{{ error }}</el-text>
   </div>
 </template>
 
 <style scoped>
-.container {
-  height: 70vh;
-  background-color: #f0f0f0;
-}
-
 .flex-center {
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex-direction: column;
 }
 
 .login-box {

@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <div class="title">TodoList</div>
-    <el-button color="slateblue" size="large" class="start-btn" @click="$router.push({ name: 'todolist' })">
+    <el-text v-if="deviceState().device" size="large" type="primary">桌面端:Element-Plus</el-text>
+    <el-text v-else size="large" type="success">移动端:Vant4</el-text>
+    <el-button class="start-btn" color="slateblue" size="large" @click="$router.push({ name: 'todolist' })">
       开始使用
     </el-button>
   </div>
@@ -24,4 +26,6 @@
 }
 </style>
 <script lang="ts" setup>
+
+import {deviceState} from "../stores/device.ts";
 </script>

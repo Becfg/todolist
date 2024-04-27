@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 
 import Item from "./Item.vue";
-import {useTodo} from "../stores/todo.ts";
+import {useTodo} from "@/stores/todo.ts";
 import {storeToRefs} from "pinia";
+import {Todo} from "@/type/type.ts";
 
 
-const {filteredTodos} = storeToRefs(useTodo())
+const {filteredTodos}: { filteredTodos: Todo[] } = storeToRefs(useTodo())
 
 </script>
 

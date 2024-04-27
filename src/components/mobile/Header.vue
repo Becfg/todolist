@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 
 import {ref} from "vue";
-import {useTodo} from "../stores/todo.ts";
+import {useTodo} from "@/stores/todo.ts";
 
 const title = ref("")
 
@@ -13,8 +13,8 @@ function addTodo() {
 
 <template>
   <div class="todo-header" style="display: flex;">
-    <el-input v-model="title" placeholder="请输入任务名(回车添加" type="text" @keyup.enter="addTodo"/>
-    <el-button type="primary" @click="addTodo">添加</el-button>
+    <van-field v-model="title" placeholder="请输入任务名(回车添加" type="text" @keyup.enter="addTodo"/>
+    <van-button icon="plus" type="primary" @click="addTodo">添加</van-button>
   </div>
 </template>
 

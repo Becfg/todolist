@@ -22,7 +22,15 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     //    "noImplicitAny": true,
-    "types": ["element-plus/global"]
+    "types": [
+      "element-plus/global"
+    ],
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
   },
   "include": [
     "src/**/*.ts",

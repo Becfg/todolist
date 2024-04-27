@@ -2,7 +2,7 @@ import {defineStore} from "pinia";
 import {computed, onMounted, ref, watch} from "vue";
 import {Todo} from "../type/type";
 
-export const todoStore = defineStore("todo", () => {
+export const useTodo = defineStore("todo", () => {
 //默认不隐藏
     const hideCompleted = ref(false)
 
@@ -15,12 +15,11 @@ export const todoStore = defineStore("todo", () => {
 
     })
 
-    // 更新数据
+// 更新数据
     watch(todos, saveData, {deep: true})//深度监听
 // 保存数据方法
     function saveData() {
         localStorage.setItem("todos", JSON.stringify(todos.value))
-        console.log("save")
     }
 
 
@@ -34,7 +33,6 @@ export const todoStore = defineStore("todo", () => {
 // 删除todo
     function deleteTodo(id: number) {
         todos.value = todos.value.filter((item) => item.id !== id)
-        console.log("del")
     }
 
 // 清除已完成

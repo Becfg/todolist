@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 
-import {Todo} from "../type/type.ts"
-import {useTodo} from "../stores/todo.ts";
+import {Todo} from "@/type/type.ts"
+import {useTodo} from "@/stores/todo.ts";
 
 defineProps({
   todo: {
@@ -17,13 +17,17 @@ const deleteTodo = useTodo().deleteTodo
 
 <template>
   <div class="content">
-    <el-card style="margin-bottom: 5px;">
-      <div>
-        <el-checkbox v-model="todo.done" size="large" style="margin-right: 10px;"/>
+    <van-cell center style="margin: 5px 0; padding: 5px">
+      <template #icon>
+        <van-checkbox v-model="todo.done" style="margin-right: 10px;"/>
+      </template>
+      <template #title>
         <el-text :tag="todo.done ? 'del' : 'span'" size="large">{{ todo.title }}</el-text>
-      </div>
-      <el-button type="danger" @click="deleteTodo(todo?.id as number)">删除</el-button>
-    </el-card>
+      </template>
+      <template #value>
+        <van-button size="small" type="danger" @click="deleteTodo(todo?.id as number)">删除</van-button>
+      </template>
+    </van-cell>
   </div>
 
 </template>
