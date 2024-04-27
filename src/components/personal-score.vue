@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import {ref} from "vue"
+
+const value = ref()
 
 const selectCourse = [
   {text: '前端框架应用项目开发', value: 0},
