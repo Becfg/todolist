@@ -7,17 +7,9 @@ import Header from "./Header.vue";
 </script>
 
 <template>
-  <div class="container">
-    <Header/>
-    <List/>
-    <Footer/>
-  </div>
+  <Header/>
+  <List/>
+  <Footer/>
 </template>
 
-<style scoped>
-.container {
-  margin: auto;
-  max-width: 600px;
-}
-
-</style>
+<style scoped></style>

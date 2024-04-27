@@ -12,6 +12,7 @@ function addTodo() {
 </script>
 
 <template>
+  <el-text type="danger">Mobile:移动端</el-text>
   <div class="todo-header" style="display: flex;">
     <van-field v-model="title" placeholder="请输入任务名(回车添加" type="text" @keyup.enter="addTodo"/>
     <van-button icon="plus" type="primary" @click="addTodo">添加</van-button>

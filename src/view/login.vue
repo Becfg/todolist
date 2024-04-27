@@ -52,11 +52,11 @@ const login = () => {
 }
 
 .login-box {
-  width: 500px;
+  width: 90vw;
+  height: 90vh;
   padding: 40px 30px;
   border-radius: 10px;
   box-sizing: border-box;
-  height: 80vh;
   background-color: #f0f0f0;
 }
 
@@ -67,6 +67,7 @@ h1 {
 }
 
 .submit {
+  max-width: 250px;
   width: 60%;
 }
 </style>

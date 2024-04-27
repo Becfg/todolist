@@ -28,6 +28,16 @@ const router = createRouter({
             path: "/login",
             name: "login",
             component: login
+        },
+        {
+            path: "/scores",
+            name: "scores",
+            component: () => import("../components/studentScores.vue")
+        },
+        {
+            path: "/personal-score",
+            name: "personal-score",
+            component: () => import("../components/personal-score.vue")
         }
     ]
 });
