@@ -4,9 +4,10 @@ import Item from "./Item.vue";
 import {useTodo} from "@/stores/todo.ts";
 import {storeToRefs} from "pinia";
 import {Todo} from "@/type/type.ts";
+import {Ref} from "vue";
 
 
-const {filteredTodos}: { filteredTodos: Todo[] } = storeToRefs(useTodo())
+const {filteredTodos}: { filteredTodos: Ref<Todo[]> } = storeToRefs(useTodo())
 
 </script>
 
