@@ -25,7 +25,7 @@
     "types": [
       "element-plus/global"
     ],
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
       "@/*": [
         "src/*"
